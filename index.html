@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" placeholder="search for the items" id="ip1" />
+      <input type="submit" id="submit" value="Search" />
+    </form>
+
+    <div id="div1"></div>
+    <script>
+      let ip1 = document.getElementById("ip1");
+      let form = document.getElementById("form");
+      let div1 = document.getElementById("div1");
+
+   
+      let obj1 = [
+        {
+          Title: "iPhone",
+          price: "29,900",
+          Description: "iPhone has good clarity",
+          img: "https://m.media-amazon.com/images/I/61EscGf8mYL._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "Realme",
+          price: "20,400",
+          Description: "Realme has good features",
+          img: "https://m.media-amazon.com/images/I/71EN6N9kUEL._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "OnePlus",
+          price: "18,500",
+          Description: "OnePlus is high performance",
+          img: "https://m.media-amazon.com/images/I/61nxQ62qglL._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "Samsung",
+          price: "17,400",
+          Description: "Samsung is reliable",
+          img: "https://m.media-amazon.com/images/I/81T3olLXpUL._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "poco",
+          price: "39,800",
+          Description: "poco is reliable",
+          img: "https://m.media-amazon.com/images/I/712tqhtIw1L._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "oppo",
+          price: "22,800",
+          Description: "oppo is reliable",
+          img: "https://m.media-amazon.com/images/I/81t7p9ClUPL._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "vivo",
+          price: "16,800",
+          Description: "vivo is reliable",
+          img: "https://m.media-amazon.com/images/I/81m1SddJ6-L._AC_UY327_FMwebp_QL65_.jpg",
+        },
+        {
+          Title: "sony",
+          price: "16,800",
+          Description: "Sony is reliable",
+          img: "https://m.media-amazon.com/images/I/61QrADCsn8L._AC_UL480_FMwebp_QL65_.jpg",
+        },
+      ];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        div1.innerHTML = ""; 
+        let found = false;
+
+        for (i of obj1) {
+          if (i.Title.toUpperCase() === ip1.value.toUpperCase()) {
+            let p1 = document.createElement("p");
+            div1.appendChild(p1);
+            div1.style.border = "2px solid";
+            div1.style.height = "340px";
+            div1.style.width = "220px";
+            div1.style.padding = "10px 10px";
+            div1.style.marginLeft = "90px";
+            div1.style.marginTop = "40px";
+            div1.style.textAlign = "center";
+
+            let image = document.createElement("img");
+            image.src = i.img;
+            image.style.height = "190px";
+            image.style.backgroundColor;
+            p1.innerHTML = `<b>Title:</b>${i.Title}<br><b>Price:</b>${i.price}<br><b>Description:</b>${i.Description}`;
+
+            div1.appendChild(image);
+
+            div1.appendChild(p1);
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          let p2 = document.createElement("p");
+          p2.innerHTML = "Not found";
+          div1.appendChild(p2);
+        }
+      });
+    </script>
+  </body>
+</html>
